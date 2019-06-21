@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Author: Naveen Lalwani					      %
+% Author: Naveen Lalwani					      %
 % 		                                                      %
 % This project was done as a final year project at Vellore Institute  %
 % of Technology for the fulfilment of requirement of Bachelor of      %
@@ -24,7 +24,7 @@ function J = FitnessFunc(q)
 	% Variables are q1, q2, q3, q4, q5 
 	% R = q5 
 	 
-	%% ############### MODEL PARAMETERS############### 
+	% ############### MODEL PARAMETERS############### 
 	ks = 900;		% Suspension Stiffness (N/m) 
 	kt = 2500;		% Tire stiffness (N/m)
 	ms = 2.45;		% Sprung Mass (kg) 
@@ -33,24 +33,24 @@ function J = FitnessFunc(q)
 	bus = 5;		% Tire Inhenrent Damping coefficient (sec/m)
 	 
 
-	%% ############### State Space Model ##############
+	% ############### State Space Model ##############
 	A = [ 0 1 0 -1;
 	    -ks/ms -bs/ms 0 bs/ms;
 	    0 0 0 1;
 	    ks/mu bs/mu -kt/mu -(bs+bus)/mu];
 
 	B = [0  0; 
-		0 1/ms;
-		-1  0;
-		bus/mu -1/mu];
+	     0 1/ms;
+	     -1  0;
+	     bus/mu -1/mu];
 
 	C = [ 1 0 0 0;
-	-ks/ms -bs/ms 0 bs/ms];
+	     -ks/ms -bs/ms 0 bs/ms];
 
 	D = [0 0;
-		0 1/ms];
+	     0 1/ms];
 
-	%% Declaration of Q and R matrices variables 
+	% Declaration of Q and R matrices variables 
 	temp = [q(1);
 			q(2);
 			q(3);
@@ -58,17 +58,17 @@ function J = FitnessFunc(q)
 	Q = diag(temp);
 	R = q(5);
 	 
-	%% Calculating Gain
+	% Calculating Gain
 	k = lqr(A, B(:, 2), Q, R);
 
-	%% Calculating eigen vector and eigen values
+	% Calculating eigen vector and eigen values
 
 	% V is the right eigenvector and W is the left eigenvector 
 	% D is the diagonal matrix of the eigenvalues
 	% Finding eigenvalues of the system with closed loop feedback.
-	[V,D,W] = eig(A - B(:, 2) * k);
+	[V, D, W] = eig(A - B(:, 2) * k);
 
-	S = dot(transpose(W),V)/(norm(V,2)*norm(W,2));
+	S = dot(transpose(W), V)/(norm(V, 2)*norm(W, 2));
 	J = abs(sum(S));
 
 end
