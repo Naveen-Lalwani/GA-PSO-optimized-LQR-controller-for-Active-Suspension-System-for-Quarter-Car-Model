@@ -1,19 +1,19 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Author: Naveen Lalwani											  %
-% 																	  %
+%% Author: Naveen Lalwani					      %
+% 		                                                      %
 % This project was done as a final year project at Vellore Institute  %
-% of Technology for the fulfilment of requirement of Bachelor of 	  %
-% Technology degree. 												  %
-%																	  % 
-% This file presents the objective function which is used to 		  %
-% optimize the LQR controller by optimizing the Q matrix (state 	  %
-% weighing matrix) and R matrix (control weighting matrix). The 	  %
+% of Technology for the fulfilment of requirement of Bachelor of      %
+% Technology degree. 						      %
+%								      % 
+% This file presents the objective function which is used to 	      %
+% optimize the LQR controller by optimizing the Q matrix (state       %
+% weighing matrix) and R matrix (control weighting matrix). The       %
 % selection of the penalty matrices decides the performance of the    %
-% controller. 														  %
-% The state spece equations for the quarter car model have been 	  %
-% derived and the model parameters have been taken as per the 		  %
-% hardware model provided by Quanser Inc.							  %
-%																	  %
+% controller. 	 						      %
+% The state spece equations for the quarter car model have been       %
+% derived and the model parameters have been taken as per the 	      %
+% hardware model provided by Quanser Inc.			      %
+%								      %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function J = FitnessFunc(q)
